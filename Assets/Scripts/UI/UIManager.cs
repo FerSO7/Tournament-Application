@@ -50,5 +50,5 @@ public class UIManager : MonoBehaviour
     }
 
     /* Se que destruir objectos en tiempo de ejecucion no es la mejor practica, pero me parecio un poco "overkill" crear un sistema q 
-     que reusara las objetos , ya q a mi parecer estas consultas a la api no se harian repetidamente*/
+     que reusara las objetos(como por ej con pooling) , ya q a mi parecer estas consultas a la api no se harian repetidamente*/
 }
