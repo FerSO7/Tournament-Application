@@ -34,7 +34,6 @@ namespace TournamentsDataToLoad
             tournamentList = new List<Tournament>();
             GetDataFromJson();
         }
-
         private void GetDataFromJson()
         {
             StartCoroutine(GetJSONEnumerator());
@@ -56,6 +55,7 @@ namespace TournamentsDataToLoad
             tournamentList.Clear();        
         }
 
+        #region Coroutines
         private IEnumerator GetJSONEnumerator()
         {
             UnityWebRequest webRequest = UnityWebRequest.Get(API_URL);
@@ -75,6 +75,7 @@ namespace TournamentsDataToLoad
                 ProcessJsonData(json);
             }
         }
-    }   
+        #endregion
+    }
 }
 
