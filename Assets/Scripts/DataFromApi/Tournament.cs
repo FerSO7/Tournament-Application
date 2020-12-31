@@ -1,11 +1,15 @@
-﻿public class Tournament 
-{   
-    public string Id { get; set; }
-    public string Date { get; set; }
-
-    public Tournament(string id, string date)
+﻿namespace TournamentsDataToLoad
+{  
+    public class Tournament
     {
-        Id = id;
-        Date = date;
+        public string Id { get; set; }
+        public string Date { get; set; }
+
+        public Tournament(string id, string date)
+        {
+            Id = id;
+            Date = date;
+        }
     }
 }
+
