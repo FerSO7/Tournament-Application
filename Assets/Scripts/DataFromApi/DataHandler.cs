@@ -25,18 +25,17 @@ namespace TournamentsDataToLoad
         #endregion
 
         #region Events
-        public static event Action<List<Tournament>> onSendingDataToUI;
+        public static event Action<List<Tournament>> OnSendingDataToUI;
         #endregion
 
         private void OnEnable()
         {
-            UIManager.onRefreshButtonPressed += GetDataFromJson;
+            UIManager.OnRefreshButtonPressed += GetDataFromJson;
         }
         private void OnDisable()
         {
-            UIManager.onRefreshButtonPressed -= GetDataFromJson;
+            UIManager.OnRefreshButtonPressed -= GetDataFromJson;
         }
-
         private void Start()
         {
             tournamentData = new List<TournamentData>();
@@ -58,7 +57,7 @@ namespace TournamentsDataToLoad
                 tournamentList.Add(tournament);                
             }
 
-            onSendingDataToUI?.Invoke(tournamentList);
+            OnSendingDataToUI?.Invoke(tournamentList);
 
             tournamentData.Clear();
             tournamentList.Clear();        

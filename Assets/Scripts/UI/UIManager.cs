@@ -6,19 +6,23 @@ using System;
 
 public class UIManager : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private Transform parent;
     [SerializeField] private GameObject tournamentInfoGOToInstantiate;
     private List<GameObject> GOInScrollView;
+    #endregion
 
-    public static event Action onRefreshButtonPressed;
+    #region Events
+    public static event Action OnRefreshButtonPressed;
+    #endregion
 
     private void OnEnable()
     {
-        DataHandler.onSendingDataToUI += SetDataOnScrollView;
+        DataHandler.OnSendingDataToUI += SetDataOnScrollView;
     }
     private void OnDisable()
     {
-        DataHandler.onSendingDataToUI -= SetDataOnScrollView;
+        DataHandler.OnSendingDataToUI -= SetDataOnScrollView;
     }
     private void Start()
     {
@@ -34,19 +38,17 @@ public class UIManager : MonoBehaviour
 
             GOInScrollView.Add(tournamentGO);
         }
-    }
-
-    /* Se que destruir objectos en tiempo de ejecucion no es la mejor practica, pero me parecio un poco "overkill" crear un sistema q 
-      que reusara las objetos , ya q a mi parecer estas consultas a la api no se harian repetidamente*/
+    }   
     public void OnClickRefresh()
     {
         foreach(GameObject go in GOInScrollView)
         {
-            Destroy(gameObject);
+            Destroy(go);
         }
 
-        onRefreshButtonPressed?.Invoke();
-
+        OnRefreshButtonPressed?.Invoke();
     }
 
+    /* Se que destruir objectos en tiempo de ejecucion no es la mejor practica, pero me parecio un poco "overkill" crear un sistema q 
+     que reusara las objetos , ya q a mi parecer estas consultas a la api no se harian repetidamente*/
 }
