@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using TournamentsDataToLoad;
 using TMPro;
@@ -26,4 +25,6 @@ public class UIManager : MonoBehaviour
            tournamentGO.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = tournament.Date;
         }
     }
+
+
 }

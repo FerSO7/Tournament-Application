@@ -32,12 +32,16 @@ namespace TournamentsDataToLoad
         {
             tournamentData = new List<TournamentData>();
             tournamentList = new List<Tournament>();
-            StartCoroutine(GetJSONEnumerator()); // crear metodo para llamar la corrutina
+            GetDataFromJson();
+        }
+
+        private void GetDataFromJson()
+        {
+            StartCoroutine(GetJSONEnumerator());
         }
         private void ProcessJsonData(string json)
         {
-            TournamentJsonData tournamentJsonData = JsonUtility.FromJson<TournamentJsonData>(json);
-          
+            TournamentJsonData tournamentJsonData = JsonUtility.FromJson<TournamentJsonData>(json);            
             tournamentData = tournamentJsonData.data;
             
             foreach(TournamentData td in tournamentData)
@@ -55,6 +59,7 @@ namespace TournamentsDataToLoad
         private IEnumerator GetJSONEnumerator()
         {
             UnityWebRequest webRequest = UnityWebRequest.Get(API_URL);
+
             webRequest.SetRequestHeader(FIRST_HEADER, API_KEY);
             webRequest.SetRequestHeader(SECOND_HEADER, JSON_API_MEDIA_TYPE);
 
