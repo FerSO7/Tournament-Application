@@ -28,6 +28,15 @@ namespace TournamentsDataToLoad
         public static event Action<List<Tournament>> onSendingDataToUI;
         #endregion
 
+        private void OnEnable()
+        {
+            UIManager.onRefreshButtonPressed += GetDataFromJson;
+        }
+        private void OnDisable()
+        {
+            UIManager.onRefreshButtonPressed -= GetDataFromJson;
+        }
+
         private void Start()
         {
             tournamentData = new List<TournamentData>();
